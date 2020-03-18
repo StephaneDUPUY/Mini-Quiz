@@ -1,2 +1,1 @@
-# Mini-Quiz
-Mini Quiz - 20/09/2019
+# Mini-Quiz - 20/09/2019
