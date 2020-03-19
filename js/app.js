@@ -35,15 +35,23 @@ var app = {
         var userAnswer = app.askQuestion(question);
         console.log(userAnswer);
 
-        //isAnswerCorrect contient un booléen
+        //isAnswerCorrect is a boolean
         var isAnswerCorrect = app.checkResponse(questionId, userAnswer);
 
+        // will content ul where added question
+        var list = null;
+
+        // if good answer
         if (isAnswerCorrect){
-        console.log("exact !");
+            // target green ul
+            list = document.querySelector("#right .responses"); 
         }
         else {
-        console.log("non !");
-    }
+            // else red one
+            list = document.querySelector("#wrong .responses");
+        }
+        // then add li with question in ul
+        list.innerHTML += '<li>' + question + '</li>';
 
     }
 };
