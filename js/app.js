@@ -25,6 +25,10 @@ var app = {
     },
 
     playQuizz: function() {
+        // counters for all answer initialised
+        var goodAnswersCount = 0;
+        var wrongAnswersCount = 0;
+
         // loop on all questions array
         for(var i = 0; i < questions.length; i++){
             console.log('app.init');
@@ -37,23 +41,35 @@ var app = {
             var userAnswer = app.askQuestion(question);
             console.log(userAnswer);
 
-            //isAnswerCorrect is a boolean
+            // isAnswerCorrect is a boolean
             var isAnswerCorrect = app.checkResponse(questionId, userAnswer);
 
             // will content ul where added question
             var list = null;
+            var listTitle = null;
 
             // if good answer
             if (isAnswerCorrect){
                 // target green ul
                 list = document.querySelector("#right .responses");
+                // increment counter for good answers
+                goodAnswersCount++;
+                // target span for good answers
+                listTitle = document.getElementById("good-answers-count");
+                // add quantity of good answers.
+                listTitle.innerHTML = " (" + goodAnswersCount + ")"
             }
             else {
                 // else target red ul
                 list = document.querySelector("#wrong .responses");
-            }
+                wrongAnswersCount++;
+                listTitle = document.getElementById("wrong-answers-count");
+                listTitle.innerHTML = " (" + wrongAnswersCount + ")";
+                    }
             // and then add li with question in ul
             list.innerHTML += '<li>' + question + '</li>';
+
+            debugger;
         }
 
     },
